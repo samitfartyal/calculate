@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculation Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Calculation Result</h1>
+        <p>Total Percentage: {{ percentage }}%</p>
+        <p>SGPA: {{ sgpa }}</p>
+        <a href="{{ url_for('index') }}" class="btn">Back to Calculator</a>
+    </div>
+</body>
+</html>

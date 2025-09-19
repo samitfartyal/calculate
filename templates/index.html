@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Marks Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Student Marks Calculator</h1>
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="/">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject Code</th>
+                        <th>Theory Marks</th>
+                        <th>Practical Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for code in subject_codes %}
+                    <tr>
+                        <td>{{ code }}</td>
+                        <td><input type="number" name="theory_{{ code }}" min="0" max="{{ max_theory[code] }}" required /> (out of {{ max_theory[code] }})</td>
+                        <td><input type="number" name="practical_{{ code }}" min="0" max="{{ max_practical[code] }}" required /> (out of {{ max_practical[code] }})</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn">Calculate</button>
+        </form>
+        <hr />
+        <a href="{{ url_for('upload') }}" class="btn">Analyze Marks Photo</a>
+    </div>
+</body>
+</html>
